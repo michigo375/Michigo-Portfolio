@@ -1,3 +1,4 @@
+/*電腦版樣式*/
 body {
   background-color: #aaaaaa;
   font-family: "Microsoft JhengHei", sans-serif;
@@ -6,4 +7,24 @@ body {
 }
 h1 {
   color: #000000;
+}
+
+/* 手機版樣式 */
+@media (max-width: 600px) {
+  body {
+    padding: 20px;
+  }
+
+  img {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  p {
+    font-size: 1rem;
+  }
 }
