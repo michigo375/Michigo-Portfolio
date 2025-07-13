@@ -8,6 +8,21 @@ body {
 h1 {
   color: #000000;
 }
+/* 調整圖片大小 */
+img {
+  width: 300px;
+  max-width: 100%;
+  display: block;
+  margin: 0 auto;
+}
+
+/* 讓按鈕下面有間距 */
+#countButton {
+  margin-top: 10px;
+  padding: 8px 16px;
+  font-size: 16px;
+  cursor: pointer;
+}
 
 /* 手機版樣式 */
 @media (max-width: 600px) {
