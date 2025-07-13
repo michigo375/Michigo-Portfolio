@@ -13,5 +13,23 @@
   <img src="images/massive-nuclear-explosion-1080x675.jpg" alt="explosion" width="200" />
   
 </body>
+<!-- 按鈕區塊 -->
+<button id="countButton">按我！</button>
+<p>你已經按了 <span id="clickCount">0</span> 次</p>
 
+<script>
+  // 計數變數
+  let count = 0;
+
+  // 抓到按鈕與文字元素
+  const button = document.getElementById("countButton");
+  const display = document.getElementById("clickCount");
+
+  // 點擊時的動作
+  button.addEventListener("click", function () {
+    count++;
+    display.textContent = count;
+  });
+</script>
+</body>
 </html>
