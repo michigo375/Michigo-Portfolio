@@ -18,11 +18,23 @@ img {
 
 /* 讓按鈕下面有間距 */
 #countButton {
-  margin-top: 10px;
-  padding: 8px 16px;
+  padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  border-radius: 8px;
+  border: none;
+  background-color: #ffffff;
+  color: rgb(255, 0, 0);
+  box-shadow: 0 4px 0 #222;
 }
+
+/* 點下去的動畫效果 */
+#countButton:active {
+  transform: scale(0.95);
+  box-shadow: 0 2px 0 #000000;
+}
+
 
 /* 手機版樣式 */
 @media (max-width: 600px) {
