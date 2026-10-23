@@ -3,11 +3,12 @@ import { db, auth } from "./firebase.js";
 import {
   collection,
   addDoc,
-  getDocs,
+  onSnapshot,
   query,
   orderBy,
   serverTimestamp
 } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js";
+
 
 const nicknameInput = document.getElementById("nickname");
 const messageInput = document.getElementById("message");
@@ -17,12 +18,11 @@ const messagesDiv = document.getElementById("messages");
 
 const messagesRef = collection(db, "messages");
 
-async function loadMessages() {
-  messagesDiv.replaceChildren();
+function loadMessages() {
+  const q = query(messagesRef, orderBy("createdAt", "desc"));
 
-  try {
-    const q = query(messagesRef, orderBy("createdAt", "desc"));
-    const snapshot = await getDocs(q);
+  return onSnapshot(q, (snapshot) => {
+    messagesDiv.replaceChildren();
 
     snapshot.forEach((doc) => {
       const data = doc.data();
@@ -37,11 +37,12 @@ async function loadMessages() {
       article.append(name, text);
       messagesDiv.append(article);
     });
-  } catch (error) {
+  }, (error) => {
     console.error(error);
-    statusText.textContent = "讀取留言失敗，請查看 Firebase 設定。";
-  }
+    statusText.textContent = "即時更新失敗，請查看 Console。";
+  });
 }
+
 
 sendButton.addEventListener("click", async () => {
   const text = messageInput.value.trim();
