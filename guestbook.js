@@ -11,6 +11,19 @@ import {
 
 
 const nicknameInput = document.getElementById("nickname");
+// 讀取上次使用的暱稱
+nicknameInput.value = localStorage.getItem("guestbookNickname") || "";
+
+// 使用者輸入時，自動記住暱稱
+nicknameInput.addEventListener("input", () => {
+  const nickname = nicknameInput.value.trim();
+
+  if (nickname) {
+    localStorage.setItem("guestbookNickname", nickname);
+  } else {
+    localStorage.removeItem("guestbookNickname");
+  }
+});
 const messageInput = document.getElementById("message");
 const sendButton = document.getElementById("sendMessage");
 const statusText = document.getElementById("status");
@@ -44,6 +57,15 @@ function loadMessages() {
 }
 
 
+const animals = [
+  "猴子", "大象", "企鵝", "狐狸", "水豚",
+  "貓咪", "熊貓", "章魚", "海豹", "兔子",
+  "長頸鹿", "柴犬", "河馬", "袋鼠", "鯨魚"
+];
+
+const anonymousNickname =
+  `匿名 ${animals[Math.floor(Math.random() * animals.length)]}`;
+
 sendButton.addEventListener("click", async () => {
   const text = messageInput.value.trim();
 
@@ -61,9 +83,16 @@ sendButton.addEventListener("click", async () => {
       throw new Error("匿名登入尚未完成，請稍後再試。");
     }
 
-    const nickname =
-      nicknameInput.value.trim() ||
-      `匿名#${Math.floor(1000 + Math.random() * 9000)}`;
+    
+const animals = [
+  "猴子", "大象", "企鵝", "狐狸", "水豚",
+  "貓咪", "熊貓", "章魚", "海豹", "兔子",
+  "長頸鹿", "柴犬", "河馬", "袋鼠", "鯨魚"
+];
+
+const nickname =
+  nicknameInput.value.trim() || anonymousNickname;
+
 
     await addDoc(messagesRef, {
       nickname,
