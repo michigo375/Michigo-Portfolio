@@ -135,7 +135,7 @@ sendButton.addEventListener("click", async () => {
   const text = messageInput.value.trim();
 
   if (!text) {
-    statusText.textContent = "請先輸入留言。";
+    statusText.textContent = "Say Something!";
     return;
   }
 
@@ -168,7 +168,7 @@ const nickname =
     });
 
     messageInput.value = "";
-    statusText.textContent = "留言成功！";
+    statusText.textContent = "Success！";
     await loadMessages();
   } catch (error) {
     console.error(error);
