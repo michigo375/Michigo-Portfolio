@@ -58,6 +58,7 @@ function loadMessages() {
   });
 }
 
+
 function renderMessages() {
   const totalPages = Math.max(1, Math.ceil(allMessages.length / PAGE_SIZE));
   const startIndex = (currentPage - 1) * PAGE_SIZE;
@@ -69,11 +70,28 @@ function renderMessages() {
     const article = document.createElement("article");
     const name = document.createElement("strong");
     const text = document.createElement("p");
+    const time = document.createElement("div");
 
     name.textContent = data.nickname || "匿名";
     text.textContent = data.text || "";
 
-    article.append(name, text);
+    if (data.createdAt) {
+      const date = data.createdAt.toDate();
+      time.textContent = date.toLocaleString("zh-TW", {
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: false
+      });
+    } else {
+      time.textContent = "時間未知";
+    }
+
+    time.className = "message-time";
+
+    article.append(name, text, time);
     messagesDiv.append(article);
   });
 
@@ -82,24 +100,6 @@ function renderMessages() {
   nextPageButton.disabled = currentPage === totalPages;
 }
 
-prevPageButton.addEventListener("click", () => {
-  if (currentPage > 1) {
-    currentPage--;
-    renderMessages();
-  }
-});
-
-nextPageButton.addEventListener("click", () => {
-  const totalPages = Math.max(
-    1,
-    Math.ceil(allMessages.length / PAGE_SIZE)
-  );
-
-  if (currentPage < totalPages) {
-    currentPage++;
-    renderMessages();
-  }
-});
 
 
 
