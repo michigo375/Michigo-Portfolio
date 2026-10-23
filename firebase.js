@@ -20,7 +20,6 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 signInAnonymously(auth);
 
-export { auth };
 const db = getFirestore(app);
 
 export { app, db, auth };
