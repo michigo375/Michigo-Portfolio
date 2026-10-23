@@ -7,8 +7,6 @@ const firebaseConfig = {
   // 請把 Firebase 提供的設定貼在這裡
 };
 
-// Your web app's Firebase configuration
-const firebaseConfig = {
   apiKey: "AIzaSyAuMv9H557AlXdxuNS7dORotm5_CPgzkYs",
   authDomain: "guestbook-f4d09.firebaseapp.com",
   projectId: "guestbook-f4d09",
