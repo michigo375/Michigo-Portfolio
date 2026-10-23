@@ -95,7 +95,7 @@ function renderMessages() {
     messagesDiv.append(article);
   });
 
-  pageInfo.textContent = `-  ${currentPage}   -`;
+  pageInfo.textContent = `- ${currentPage} -`;
   prevPageButton.disabled = currentPage === 1;
   nextPageButton.disabled = currentPage === totalPages;
 }
