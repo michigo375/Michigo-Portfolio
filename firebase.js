@@ -1,5 +1,6 @@
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
+import { getFirestore } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js";
 
 const firebaseConfig = {
   // 請把 Firebase 提供的設定貼在這裡
@@ -22,7 +23,6 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
-const app = initializeApp(firebaseConfig);
-
-export { app };
+export { app, db };
