@@ -28,33 +28,79 @@ const messageInput = document.getElementById("message");
 const sendButton = document.getElementById("sendMessage");
 const statusText = document.getElementById("status");
 const messagesDiv = document.getElementById("messages");
+const prevPageButton = document.getElementById("prevPage");
+const nextPageButton = document.getElementById("nextPage");
+const pageInfo = document.getElementById("pageInfo");
+
+let allMessages = [];
+let currentPage = 1;
+const PAGE_SIZE = 50;
 
 const messagesRef = collection(db, "messages");
+
 
 function loadMessages() {
   const q = query(messagesRef, orderBy("createdAt", "desc"));
 
   return onSnapshot(q, (snapshot) => {
-    messagesDiv.replaceChildren();
+    allMessages = snapshot.docs.map((doc) => doc.data());
 
-    snapshot.forEach((doc) => {
-      const data = doc.data();
+    const totalPages = Math.max(1, Math.ceil(allMessages.length / PAGE_SIZE));
 
-      const article = document.createElement("article");
-      const name = document.createElement("strong");
-      const text = document.createElement("p");
+    if (currentPage > totalPages) {
+      currentPage = totalPages;
+    }
 
-      name.textContent = data.nickname || "匿名";
-      text.textContent = data.text || "";
-
-      article.append(name, text);
-      messagesDiv.append(article);
-    });
+    renderMessages();
   }, (error) => {
     console.error(error);
     statusText.textContent = "即時更新失敗，請查看 Console。";
   });
 }
+
+function renderMessages() {
+  const totalPages = Math.max(1, Math.ceil(allMessages.length / PAGE_SIZE));
+  const startIndex = (currentPage - 1) * PAGE_SIZE;
+  const pageMessages = allMessages.slice(startIndex, startIndex + PAGE_SIZE);
+
+  messagesDiv.replaceChildren();
+
+  pageMessages.forEach((data) => {
+    const article = document.createElement("article");
+    const name = document.createElement("strong");
+    const text = document.createElement("p");
+
+    name.textContent = data.nickname || "匿名";
+    text.textContent = data.text || "";
+
+    article.append(name, text);
+    messagesDiv.append(article);
+  });
+
+  pageInfo.textContent = `-  ${currentPage}   -`;
+  prevPageButton.disabled = currentPage === 1;
+  nextPageButton.disabled = currentPage === totalPages;
+}
+
+prevPageButton.addEventListener("click", () => {
+  if (currentPage > 1) {
+    currentPage--;
+    renderMessages();
+  }
+});
+
+nextPageButton.addEventListener("click", () => {
+  const totalPages = Math.max(
+    1,
+    Math.ceil(allMessages.length / PAGE_SIZE)
+  );
+
+  if (currentPage < totalPages) {
+    currentPage++;
+    renderMessages();
+  }
+});
+
 
 
 const animals = [
