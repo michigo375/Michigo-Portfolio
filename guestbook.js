@@ -148,12 +148,7 @@ sendButton.addEventListener("click", async () => {
       throw new Error("匿名登入尚未完成，請稍後再試。");
     }
 
-    
-const animals = [
-  "猴子", "大象", "企鵝", "狐狸", "水豚",
-  "貓咪", "熊貓", "章魚", "海豹", "兔子",
-  "長頸鹿", "柴犬", "河馬", "袋鼠", "鯨魚"
-];
+
 
 const nickname =
   nicknameInput.value.trim() || anonymousNickname;
