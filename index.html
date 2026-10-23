@@ -112,6 +112,10 @@
 body {
   background-image: url("./images/bg.jpg");
   background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: 100vh;
 }
 </style>
 
@@ -120,7 +124,7 @@ body {
     <link rel="stylesheet" href="style.css" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Web Site</title>
+  <title>電波信号観測所</title>
 </head>
 <body>
   <h1>電波信号観測中</h1>
@@ -151,11 +155,11 @@ body {
 <script type="module" src="./firebase.js"></script>
 
 <section id="guestbook">
-  <h2>留言板</h2>
+  <h2>COMMENTS</h2>
 
   <input id="nickname" type="text" placeholder="暱稱（留白則匿名）" maxlength="30">
   <textarea id="message" placeholder="輸入留言..." maxlength="1000"></textarea>
-  <button id="sendMessage">送出留言</button>
+  <button id="sendMessage">Post</button>
 
   <p id="status"></p>
   <div id="messages"></div>
