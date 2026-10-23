@@ -99,7 +99,26 @@ function renderMessages() {
   prevPageButton.disabled = currentPage === 1;
   nextPageButton.disabled = currentPage === totalPages;
 }
+// 上一頁
+prevPageButton.addEventListener("click", () => {
+  if (currentPage > 1) {
+    currentPage--;
+    renderMessages();
+  }
+});
 
+// 下一頁
+nextPageButton.addEventListener("click", () => {
+  const totalPages = Math.max(
+    1,
+    Math.ceil(allMessages.length / PAGE_SIZE)
+  );
+
+  if (currentPage < totalPages) {
+    currentPage++;
+    renderMessages();
+  }
+});
 
 
 
@@ -121,7 +140,7 @@ sendButton.addEventListener("click", async () => {
   }
 
   sendButton.disabled = true;
-  statusText.textContent = "送出中……";
+  statusText.textContent = "Sending……";
 
   try {
     // 等待匿名登入完成
