@@ -135,12 +135,12 @@ sendButton.addEventListener("click", async () => {
   const text = messageInput.value.trim();
 
   if (!text) {
-    statusText.textContent = "Say Something!";
+    statusText.textContent = "電波入力必要!";
     return;
   }
 
   sendButton.disabled = true;
-  statusText.textContent = "Sending……";
+  statusText.textContent = "発信中……";
 
   try {
     // 等待匿名登入完成
