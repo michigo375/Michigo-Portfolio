@@ -127,6 +127,55 @@ body {
   align-items: center;
   gap: 12px;
 }
+
+/* 留言板注意事項遮罩 */
+#guestbook-notice-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+  background: rgba(0, 0, 0, 0.55);
+  border-radius: 12px;
+}
+
+/* 注意事項視窗 */
+#guestbook-notice {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  padding: 28px 24px;
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.96);
+  color: #222222;
+  border: 1px solid #cccccc;
+  border-radius: 10px;
+  text-align: left;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+}
+
+/* 右上角 X */
+#guestbook-notice-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: auto;
+  margin: 0;
+  padding: 4px 10px;
+  border: none;
+  background: transparent;
+  color: #555555;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+/* 確認按鈕 */
+#guestbook-notice-confirm {
+  margin-top: 20px;
+}
 </style>
 
 
@@ -189,6 +238,24 @@ body {
   <span id="pageInfo"> 1 </span>
   <button id="nextPage" disabled>Next</button>
 </div>
+
+  <!-- 留言板注意事項遮罩 -->
+  <div id="guestbook-notice-overlay">
+    <div id="guestbook-notice" role="dialog" aria-modal="true" aria-labelledby="guestbook-notice-title">
+      <button id="guestbook-notice-close" type="button" aria-label="關閉">×</button>
+
+      <h3 id="guestbook-notice-title">NOTICE</h3>
+      <p>留言前請確認以下事項：</p>
+      <ul>
+        <li>請勿發布個人隱私資訊。</li>
+        <li>請勿發布違法或不當內容。</li>
+        <li>請尊重其他留言者。</li>
+      </ul>
+
+      <button id="guestbook-notice-confirm" type="button">確認</button>
+    </div>
+  </div>
+</section>
 
 </section>
 

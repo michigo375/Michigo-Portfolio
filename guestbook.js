@@ -167,7 +167,7 @@ const nickname =
     await loadMessages();
   } catch (error) {
     console.error(error);
-    statusText.textContent = "留言失敗，請稍後再試。";
+    statusText.textContent = "Error";
   } finally {
     sendButton.disabled = false;
   }
@@ -178,3 +178,14 @@ auth.onAuthStateChanged((user) => {
     loadMessages();
   }
 });
+// 留言板注意事項視窗
+const noticeOverlay = document.getElementById("guestbook-notice-overlay");
+const noticeClose = document.getElementById("guestbook-notice-close");
+const noticeConfirm = document.getElementById("guestbook-notice-confirm");
+
+function closeNotice() {
+  noticeOverlay.style.display = "none";
+}
+
+noticeClose.addEventListener("click", closeNotice);
+noticeConfirm.addEventListener("click", closeNotice);
