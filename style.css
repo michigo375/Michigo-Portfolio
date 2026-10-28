@@ -63,10 +63,166 @@ img {
   position: relative;
 }
 
-#guestbook#guestbook-notice-close {
+  #messages {
+    max-height: 400px;
+    overflow-y: auto;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+  }
+
+  #messages article {
+    overflow-wrap: anywhere;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+  }
+
+  #messages article:last-child {
+    border-bottom: none;
+  }
+
+  
+/* 留言板整體 */
+#guestbook {
+  background: #ffffff;
+  color: #222222;
+  max-width: 720px;
+  margin: 24px auto;
+  padding: 20px;
+  border-radius: 12px;
+  box-sizing: border-box;
+}
+
+/* 暱稱、留言框、按鈕統一寬度 */
+#guestbook input,
+#guestbook textarea,
+#guestbook button {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0 0 12px;
+  padding: 12px;
+  font: inherit;
+  border-radius: 6px;
+}
+
+/* 輸入框 */
+#guestbook input,
+#guestbook textarea {
+  border: 1px solid #cccccc;
+  background: #ffffff;
+  color: #222222;
+}
+
+/* 留言輸入區 */
+#guestbook textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* 送出按鈕 */
+#guestbook button {
+  cursor: pointer;
+}
+
+/* 留言列表維持白底及內部捲動 */
+#messages {
+  background: #ffffff;
+  color: #222222;
+  max-height: 400px;
+  overflow-y: auto;
+  overflow-wrap: anywhere;
+}
+
+/* 留言板文字靠左 */
+#guestbook,
+#messages article {
+  text-align: left;
+}
+
+/* 留言時間放在右下角 */
+#messages .message-time {
+  text-align: right;
+  font-size: 12px;
+  color: #888888;
+  margin-top: 8px;
+}
+
+  #messages {
+    max-height: 400px;
+    overflow-y: auto;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+  }
+
+  #messages article {
+    overflow-wrap: anywhere;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+  }
+
+  #messages article:last-child {
+    border-bottom: none;
+  }
+
+body {
+  background-image: url("./images/background.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+#pageInfo {
+  white-space: nowrap;
+  text-align: center;
+}
+#pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+/* 留言板注意事項遮罩 */
+#guestbook-notice-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+  background: rgba(0, 0, 0, 0.55);
+  border-radius: 12px;
+}
+
+/* 注意事項視窗 */
+#guestbook-notice {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  padding: 28px 24px;
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.96);
+  color: #222222;
+  border: 1px solid #cccccc;
+  border-radius: 10px;
+  text-align: left;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+}
+
+
+/* 右上角 X */
+ #guestbook #guestbook-notice-close {
   position: absolute;
   top: 8px;
   right: 8px;
+  left: auto;
+  transform: none;
+  display: block;
   width: auto;
   margin: 0;
   padding: 4px 10px;
@@ -74,7 +230,17 @@ img {
   background: transparent;
   color: #555555;
   font-size: 22px;
-   line-height: 1; /* 避免繼承過大的行高造成偏移 /
+  line-height: 1;
   cursor: pointer;
-   z-index: 10;     / 避免被卡片內其他內容遮蓋 */
+}
+
+#guestbook button#guestbook-notice-close {
+  width: auto;
+  margin: 0;
+  padding: 4px 10px;
+}
+
+/* 確認按鈕 */
+#guestbook-notice-confirm {
+  margin-top: 20px;
 }
