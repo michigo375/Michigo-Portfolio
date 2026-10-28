@@ -59,3 +59,20 @@ img {
 #guestbook {
   position: relative;
 }
+#guestbook-notice {
+  position: relative;
+}
+
+#guestbook-notice-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: auto;
+  margin: 0;
+  padding: 4px 10px;
+  border: none;
+  background: transparent;
+  color: #555555;
+  font-size: 22px;
+  cursor: pointer;
+}
