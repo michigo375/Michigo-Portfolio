@@ -63,7 +63,7 @@ img {
   position: relative;
 }
 
-#guestbook-notice-close {
+#guestbook#guestbook-notice-close {
   position: absolute;
   top: 8px;
   right: 8px;
@@ -74,5 +74,7 @@ img {
   background: transparent;
   color: #555555;
   font-size: 22px;
+   line-height: 1; /* 避免繼承過大的行高造成偏移 /
   cursor: pointer;
+   z-index: 10;     / 避免被卡片內其他內容遮蓋 */
 }
