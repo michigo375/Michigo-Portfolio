@@ -101,7 +101,7 @@ function renderMessages() {
   openShare(data);
   });
 
-  article.append(name, text, time, shareButton);
+  article.append(name, text, shareButton, time);
   messagesDiv.append(article);
 
   });
