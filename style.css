@@ -300,50 +300,67 @@ body {
 #share-card {
   width: 100%;
   min-height: 480px;
-  padding: 24px;
+  padding: 28px 24px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   gap: 32px;
-  background: #10151d;
+
+  background-image: url("./images/share-background.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
   color: #ffffff;
   font-family: "DotGothic16", sans-serif;
   overflow-wrap: anywhere;
 }
 
+/* 上方標題區 */
 .share-card-header {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  align-items: flex-end;
+  gap: 6px;
+  text-align: right;
   color: #80d8ff;
   font-size: 11px;
   letter-spacing: 1px;
 }
 
-#share-number {
-  color: #687787;
-}
-
-.share-card-content h2 {
-  margin: 0 0 24px;
-  font-size: 22px;
+/* 電波受信記錄標題 */
+.share-card-header h2 {
+  margin: 0 0 8px;
+  font-size: 26px;
   font-weight: normal;
-  line-height: 1.6;
+  line-height: 1.5;
+  text-align: right;
 }
 
+/* TRANSMISSION 編號 */
+#share-number {
+  color: #a9bbcb;
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+
+/* 留言內容 */
 #share-text {
   margin: 0;
   color: #ffffff;
   font-size: 16px;
   line-height: 2;
+  text-align: right;
   white-space: pre-wrap;
   overflow-wrap: anywhere;
 }
 
+/* 留言者與時間：維持靠左 */
 .share-card-footer {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   gap: 10px;
   font-size: 11px;
   color: #a9bbcb;
@@ -353,17 +370,24 @@ body {
   color: #687787;
 }
 
+/* 品牌名稱與標語：靠右下 */
 .share-brand {
+  align-self: flex-end;
+  width: 100%;
   margin-top: 16px;
   padding-top: 16px;
   border-top: 1px solid #42505e;
   color: #80d8ff;
+  text-align: right;
   letter-spacing: 2px;
 }
 
 .share-slogan {
+  align-self: flex-end;
   color: #687787;
+  text-align: right;
 }
+
 
 #share-status {
   font-size: 13px;
