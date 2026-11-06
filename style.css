@@ -405,14 +405,13 @@ body {
 }
 
 /* 每則留言的分享按鈕 */
-/* 分享按鈕 */
-.message-share-button {
+#guestbook button.message-share-button {
   display: block;
   width: auto;
-  margin: 8px 0 4px auto;
+  margin: 8px 0 4px 0;
   padding: 2px 8px;
-  font-size: 12px;
-  line-height: 1.5;
+  font-size: 11px;
+  line-height: 1.4;
   border: 1px solid #cccccc;
   border-radius: 4px;
   background: #ffffff;
