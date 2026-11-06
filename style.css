@@ -244,3 +244,151 @@ body {
 #guestbook-notice-confirm {
   margin-top: 20px;
 }
+
+/* ===== 留言分享視窗 ===== */
+.share-overlay[hidden] {
+  display: none !important;
+}
+
+.share-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  overflow-y: auto;
+  box-sizing: border-box;
+  background: rgba(0, 0, 0, 0.75);
+}
+
+.share-dialog {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 24px 16px;
+  box-sizing: border-box;
+  border-radius: 12px;
+  background: #ffffff;
+  color: #222222;
+}
+
+.share-dialog h3 {
+  margin: 0 32px 20px 0;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+.share-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: auto;
+  margin: 0;
+  padding: 4px 10px;
+  border: none;
+  background: transparent;
+  color: #555555;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* 分享圖片本體 */
+#share-card {
+  width: 100%;
+  min-height: 480px;
+  padding: 24px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 32px;
+  background: #10151d;
+  color: #ffffff;
+  font-family: "DotGothic16", sans-serif;
+  overflow-wrap: anywhere;
+}
+
+.share-card-header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: #80d8ff;
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+
+#share-number {
+  color: #687787;
+}
+
+.share-card-content h2 {
+  margin: 0 0 24px;
+  font-size: 22px;
+  font-weight: normal;
+  line-height: 1.6;
+}
+
+#share-text {
+  margin: 0;
+  color: #ffffff;
+  font-size: 16px;
+  line-height: 2;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.share-card-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 11px;
+  color: #a9bbcb;
+}
+
+#share-time {
+  color: #687787;
+}
+
+.share-brand {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #42505e;
+  color: #80d8ff;
+  letter-spacing: 2px;
+}
+
+.share-slogan {
+  color: #687787;
+}
+
+#share-status {
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+
+#share-download {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  background: #10151d;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+/* 每則留言的分享按鈕 */
+.message-share-button {
+  display: block;
+  width: auto;
+  margin: 8px 0;
+  padding: 6px 12px;
+  border: 1px solid #cccccc;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #222222;
+  cursor: pointer;
+}

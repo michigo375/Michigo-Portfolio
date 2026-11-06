@@ -89,10 +89,21 @@ function renderMessages() {
       time.textContent = "時間未知";
     }
 
-    time.className = "message-time";
+  time.className = "message-time";
 
-    article.append(name, text, time);
-    messagesDiv.append(article);
+  // 分享按鈕
+  const shareButton = document.createElement("button");
+  shareButton.type = "button";
+  shareButton.className = "message-share-button";
+  shareButton.textContent = "Share";
+
+  shareButton.addEventListener("click", () => {
+  openShare(data);
+  });
+
+  article.append(name, text, time, shareButton);
+  messagesDiv.append(article);
+
   });
 
   pageInfo.textContent = `- ${currentPage} -`;
@@ -189,3 +200,87 @@ function closeNotice() {
 
 noticeClose.addEventListener("click", closeNotice);
 noticeConfirm.addEventListener("click", closeNotice);
+
+
+/* ===== 留言分享功能 ===== */
+
+const shareOverlay = document.getElementById("share-overlay");
+const shareClose = document.getElementById("share-close");
+const shareText = document.getElementById("share-text");
+const shareNickname = document.getElementById("share-nickname");
+const shareTime = document.getElementById("share-time");
+const shareDownload = document.getElementById("share-download");
+const shareStatus = document.getElementById("share-status");
+
+function openShare(data) {
+  shareText.textContent = data.text || "";
+  shareNickname.textContent =
+    "FROM　" + (data.nickname || "匿名");
+
+  if (data.createdAt) {
+    const date = data.createdAt.toDate();
+
+    shareTime.textContent =
+      "RECEIVED · " +
+      date.toLocaleString("sv-SE", {
+        timeZone: "Asia/Taipei",
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: false
+      }).replace(" ", " ");
+  } else {
+    shareTime.textContent = "RECEIVED · TIME UNKNOWN";
+  }
+
+  shareStatus.textContent = "";
+  shareOverlay.hidden = false;
+}
+
+function closeShare() {
+  shareOverlay.hidden = true;
+}
+
+shareClose.addEventListener("click", closeShare);
+
+shareOverlay.addEventListener("click", (event) => {
+  if (event.target === shareOverlay) {
+    closeShare();
+  }
+});
+
+shareDownload.addEventListener("click", async () => {
+  if (typeof window.html2canvas !== "function") {
+    shareStatus.textContent = "圖片工具載入失敗，請重新整理頁面。";
+    return;
+  }
+
+  shareDownload.disabled = true;
+  shareStatus.textContent = "正在產生圖片……";
+
+  try {
+    await document.fonts.ready;
+
+    const card = document.getElementById("share-card");
+
+    const canvas = await window.html2canvas(card, {
+      scale: 2,
+      backgroundColor: "#10151d",
+      useCORS: true
+    });
+
+    const link = document.createElement("a");
+    link.download = "signal-observatory.png";
+    link.href = canvas.toDataURL("image/png");
+    link.click();
+
+    shareStatus.textContent = "圖片已產生，請確認下載結果。";
+  } catch (error) {
+    console.error(error);
+    shareStatus.textContent = "圖片產生失敗，請稍後再試。";
+  } finally {
+    shareDownload.disabled = false;
+  }
+});

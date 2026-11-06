@@ -85,6 +85,42 @@
 
 </section>
 
+<!-- 留言分享視窗 -->
+<div id="share-overlay" class="share-overlay" hidden>
+  <div class="share-dialog" role="dialog" aria-modal="true">
+    <button id="share-close" class="share-close" type="button">×</button>
+
+    <h3>TRANSMISSION PREVIEW</h3>
+
+    <!-- 只有這張卡片會被輸出成圖片 -->
+    <div id="share-card">
+      <div class="share-card-header">
+        <span>SIGNAL OBSERVATORY</span>
+        <span id="share-number">TRANSMISSION / 0001</span>
+      </div>
+
+      <div class="share-card-content">
+        <h2>電波受信記錄</h2>
+        <p id="share-text"></p>
+      </div>
+
+      <div class="share-card-footer">
+        <div id="share-nickname"></div>
+        <div id="share-time"></div>
+        <div class="share-brand">MEGA MADE</div>
+        <div class="share-slogan">SIGNAL RECEIVED.</div>
+      </div>
+    </div>
+
+    <p id="share-status"></p>
+
+    <button id="share-download" type="button">下載 PNG 圖片</button>
+  </div>
+</div>
+
+<!-- 將指定的分享卡片轉成圖片 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
 <script type="module" src="./guestbook.js"></script>
 
 </body>
