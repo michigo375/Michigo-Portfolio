@@ -347,16 +347,16 @@ body {
 
 /* 留言內容：淡白色透明底 */
 #share-text {
-  margin: 0;
+  margin: 24px 0 0;
   padding: 16px;
-  color: #ffffff;
+  color: #000000;
   font-size: 16px;
   line-height: 2;
   text-align: left;
   white-space: pre-wrap;
   overflow-wrap: anywhere;
 
-  background: rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.3);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 4px;
 }
@@ -376,21 +376,24 @@ body {
   color: #687787;
 }
 
-/* 品牌名稱：靠右下 */
-.share-brand {
-  align-self: flex-end;
+/* 底部文字：左右排列 */
+.share-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
   margin-top: 16px;
   padding-top: 16px;
   border-top: 1px solid #42505e;
-  color: #000000;
+}
+
+.share-brand {
+  color: #80d8ff;
   text-align: right;
   letter-spacing: 2px;
 }
 
-/* 標語：靠左下 */
 .share-slogan {
-  align-self: flex-start;
   color: #687787;
   text-align: left;
 }
